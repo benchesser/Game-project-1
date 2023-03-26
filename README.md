@@ -20,6 +20,7 @@ To start I need to create the basic elements of the game
 
 -Bumpers
     'Bumpers move with w,s keys or up and down arrow keys(maybe both to make it 2 player)
+    'Invisible bumpers on the edgdes of the screen for the ball to bounce off off
 
 
 
