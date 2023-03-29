@@ -2,6 +2,10 @@
 
 I am going to create a pong game. I chose pong because it was one of the first games ever and one of the first games I played.
 
+Based on some of the tutorials I have seen and consversations with classmates I feel the best way to create this game will be through the use of an canvas html element. 
+
+So my first step of this project is to learn and understand what a canvas element is and what it does. I will also have to learn about speed and gravity in java so can change the rate at which the elements  move. I will make sure to leave comments and in here as well as on the javascript in order to show that I understand what I am doing.
+
 To start I need to create the basic elements of the game
 -Html skeleton
     'backgound color

@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     background-color: #ffc107;
 }
 
@@ -10,4 +11,38 @@ h1 {
     font-style: italic;
     color: white;
     -webkit-text-stroke: 2px black;
+}
+
+#score-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bumper {
+    border-radius: 10px;
+    top: calc(50 * 1%);
+    transform: translateY(-50%);
+    width: 1%;
+    height: 15%;
+    background-color: white;
+    position: absolute;
+}
+
+#bumper1 {
+
+}
+
+#bumper2{
+
+}
+
+#ball{
+    position: absolute;
+    left: calc(50 * 1vw);
+    top: calc(50 * 1vh);
+    transform: translate(-50%, -50%);
+    width: 3vh;
+    height: 3%;
+    background-color: white;
+    border-radius: 50%;
 }
