@@ -1,48 +1,26 @@
+
 body {
-    margin: 0;
     background-color: #ffc107;
 }
-
-h1 {
+#main {
     text-align: center;
+}
+h1 {
     font-size: 4em;
     font-family: 'Chakra Petch', sans-serif;
+    color: white;
     font-weight: 700;
     font-style: italic;
     color: white;
     -webkit-text-stroke: 2px black;
+    margin: 0;
 }
-
-#score-box {
-    display: flex;
-    justify-content: space-evenly;
+#pong-canvas {
+    border: solid;
 }
-
-.bumper {
-    border-radius: 10px;
-    top: calc(50 * 1%);
-    transform: translateY(-50%);
-    width: 1%;
-    height: 15%;
-    background-color: white;
-    position: absolute;
-}
-
-#bumper1 {
-
-}
-
-#bumper2{
-
-}
-
-#ball{
-    position: absolute;
-    left: calc(50 * 1vw);
-    top: calc(50 * 1vh);
-    transform: translate(-50%, -50%);
-    width: 3vh;
-    height: 3%;
-    background-color: white;
-    border-radius: 50%;
+#score {
+    font-size: 4em;
+    font-family: 'Chakra Petch', sans-serif;
+    color: white;
+    -webkit-text-stroke: 2px black;
 }
