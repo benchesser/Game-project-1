@@ -1,21 +1,37 @@
 let canvas = document.getElementById("pong-canvas");
-
 let context = canvas.getContext("2d");
 
-const window_height = 600;
-const window_width = 750;
+const game_height = 600;
+const game_width = 750;
 
-canvas.width = window_width;
-canvas.height = window_height;
+canvas.width = game_width;
+canvas.height = game_height;
 
-canvas.style.background = "#ffc107";
-
+//canvas.style.background = "#ffc107";
+//Class for player 1 and 2
 class Bumper {
-    constructor(){
-
+    constructor(x, y, width, height, color, speed) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.speed = speed;
     }
 }
+//Player 1
+const bumper1 = new Bumper(10, 250, 20, 100, "#fff", 2);
 
+//Player 2
+const bumper2 = new Bumper((game_width - 30), 250, 20, 100, "#fff", 2);
+
+function drawObject(object) {
+    context.fillStyle = object.color;
+    context.fillRect(object.x, object.y, object.width, object.height);
+}
+
+drawObject(bumper1);
+drawObject(bumper2);
 
 
 
