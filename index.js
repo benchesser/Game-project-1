@@ -36,16 +36,27 @@ const bumper1 = new Bumper(10, 250, 20, 100, "#fff", 2);
 const bumper2 = new Bumper((game_width - 30), 250, 20, 100, "#fff", 2);
 
 //Ball
-const mainBall = new Ball()
+const mainBall = new Ball((game_width / 2), (game_height / 2), 10, "#fff", 2)
 
 //This draws the bumpers on the canvas
 function drawObject(object) {
     context.fillStyle = object.color;
     context.fillRect(object.x, object.y, object.width, object.height);
 }
+//This function draws the ball
+function drawBall(object) {
+    context.strokeStyle = object.color;
+    context.fillStyle = object.color;
+    context.arc(object.x, object.y, object.radius, 0, Math.PI * 2, false);
+    context.stroke();
+    context.fill();
+}
 
+
+//Calling draw functions
 drawObject(bumper1);
 drawObject(bumper2);
+drawBall(mainBall);
 
 
 
