@@ -19,12 +19,26 @@ class Bumper {
         this.speed = speed;
     }
 }
+//Class for the ball
+class Ball {
+    constructor(x, y, radius, color, speed) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.speed = speed;
+    }
+}
 //Player 1
 const bumper1 = new Bumper(10, 250, 20, 100, "#fff", 2);
 
 //Player 2
 const bumper2 = new Bumper((game_width - 30), 250, 20, 100, "#fff", 2);
 
+//Ball
+const mainBall = new Ball()
+
+//This draws the bumpers on the canvas
 function drawObject(object) {
     context.fillStyle = object.color;
     context.fillRect(object.x, object.y, object.width, object.height);
@@ -32,6 +46,7 @@ function drawObject(object) {
 
 drawObject(bumper1);
 drawObject(bumper2);
+
 
 
 
