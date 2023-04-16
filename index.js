@@ -9,54 +9,35 @@ canvas.height = game_height;
 
 //canvas.style.background = "#ffc107";
 //Class for player 1 and 2
-class Bumper {
-    constructor(x, y, width, height, color, speed) {
+class Element {
+    constructor(x, y, width, height, color, speed, gravity) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.color = color;
         this.speed = speed;
-    }
-}
-//Class for the ball
-class Ball {
-    constructor(x, y, radius, color, speed) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.speed = speed;
+        this.gravity = gravity;
     }
 }
 //Player 1
-const bumper1 = new Bumper(10, 250, 20, 100, "#fff", 2);
+const bumper1 = new Element(10, 250, 20, 100, "#fff", 2, 2);
 
 //Player 2
-const bumper2 = new Bumper((game_width - 30), 250, 20, 100, "#fff", 2);
+const bumper2 = new Element((game_width - 30), 250, 20, 100, "#fff", 2, 2);
 
 //Ball
-const mainBall = new Ball((game_width / 2), (game_height / 2), 10, "#fff", 2)
+const mainBall = new Element((game_width / 2), (game_height / 2), 15, 15, "#fff", 1, 1);
 
 //This draws the bumpers on the canvas
 function drawObject(object) {
     context.fillStyle = object.color;
     context.fillRect(object.x, object.y, object.width, object.height);
 }
-//This function draws the ball
-function drawBall(object) {
-    context.strokeStyle = object.color;
-    context.fillStyle = object.color;
-    context.arc(object.x, object.y, object.radius, 0, Math.PI * 2, false);
-    context.stroke();
-    context.fill();
-}
 
 
-//Calling draw functions
-drawObject(bumper1);
-drawObject(bumper2);
-drawBall(mainBall);
+let player1Score = 0;
+let player2Score = 0;
 
 
 
