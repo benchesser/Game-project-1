@@ -8,7 +8,7 @@ canvas.width = game_width;
 canvas.height = game_height;
 
 //canvas.style.background = "#ffc107";
-//Class for player 1 and 2
+//Class for player 1, 2, and ball
 class Element {
     constructor(x, y, width, height, color, speed, gravity) {
         this.x = x;
@@ -35,6 +35,43 @@ function drawObject(object) {
     context.fillRect(object.x, object.y, object.width, object.height);
 }
 
+function ballMove() {
+    if (mainBall.y + mainBall.gravity <= 0 || mainBall.y + mainBall.gravity >= game_height) {
+        mainBall.gravity = mainBall.gravity * -1;
+        mainBall.y += mainBall.gravity;
+        mainBall.x += mainBall.speed;
+    } else {
+        mainBall.y += mainBall.gravity;
+        mainBall.x += mainBall.speed;
+    }
+
+    ballWallCollision();
+}
+//Collision detecttion
+function ballWallCollision() {
+    if (mainBall.x + mainBall.speed <=0 || mainBall.x + mainBall.speed + mainBall.width >= game_width) {
+        mainBall.y += mainBall.gravity
+        mainBall.speed = mainBall.speed * -1
+        mainBall.x += mainBall.speed;
+    } else {
+        mainBall.y += mainBall.gravity;
+        mainBall.x += mainBall.speed;
+    }
+    drawElements();
+}
+
+//Draws elements on canvas
+function drawElements(){
+    context.clearRect(0, 0, game_width, game_height)
+    drawObject(bumper1);
+    drawObject(bumper2);
+    drawObject(mainBall);
+}
+function updateGame(){
+    ballMove();
+    window.requestAnimationFrame(updateGame)
+}
+updateGame();
 
 let player1Score = 0;
 let player2Score = 0;
