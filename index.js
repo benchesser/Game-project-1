@@ -8,6 +8,22 @@ canvas.width = game_width;
 canvas.height = game_height;
 
 //canvas.style.background = "#ffc107";
+
+window.addEventListener("keypress", doKeyDown, false);
+//bumper movement
+function doKeyDown(e) {
+    const key = e.key;
+    if(key =="w" && bumper1.y - bumper1.gravity > 0)
+        bumper1.y -= bumper1.gravity * 4;
+    else if (key == "s" && bumper1.y + bumper1.height + bumper1.gravity < game_height)
+        bumper1.y += bumper1.gravity * 4;
+
+    if(key =="i" && bumper2.y - bumper2.gravity > 0)
+        bumper2.y -= bumper2.gravity * 4;
+    else if (key == "k" && bumper2.y + bumper2.height + bumper2.gravity < game_height)
+        bumper2.y += bumper2.gravity * 4;
+}
+
 //Class for player 1, 2, and ball
 class Element {
     constructor(x, y, width, height, color, speed, gravity) {
@@ -49,14 +65,7 @@ function ballMove() {
 }
 //Collision detecttion
 function ballWallCollision() {
-    if (mainBall.x + mainBall.speed <=0 || mainBall.x + mainBall.speed + mainBall.width >= game_width) {
-        mainBall.y += mainBall.gravity
-        mainBall.speed = mainBall.speed * -1
-        mainBall.x += mainBall.speed;
-    } else {
-        mainBall.y += mainBall.gravity;
-        mainBall.x += mainBall.speed;
-    }
+    
     drawElements();
 }
 
