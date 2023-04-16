@@ -3,6 +3,7 @@ let context = canvas.getContext("2d");
 
 const game_height = 600;
 const game_width = 750;
+const scoreText = document.querySelector("#score");
 
 canvas.width = game_width;
 canvas.height = game_height;
@@ -43,7 +44,7 @@ const bumper1 = new Element(10, 250, 20, 100, "#fff", 2, 2);
 const bumper2 = new Element((game_width - 30), 250, 20, 100, "#fff", 2, 2);
 
 //Ball
-const mainBall = new Element((game_width / 2), (game_height / 2), 15, 15, "#fff", 1, 1);
+const mainBall = new Element((game_width / 2), (game_height / 2), 15, 15, "#fff", 2, 2);
 
 //This draws the bumpers on the canvas
 function drawObject(object) {
@@ -65,7 +66,27 @@ function ballMove() {
 }
 //Collision detecttion
 function ballWallCollision() {
-    
+    if (
+        (mainBall.y + mainBall.gravity <= bumper2.y + bumper2.height && 
+        mainBall.x + mainBall.width + mainBall.speed >= bumper2.x && 
+        mainBall.y + mainBall.gravity > bumper2.y) || 
+        (mainBall.y + mainBall.gravity > bumper1.y &&
+            mainBall.x + mainBall.speed <= bumper1.x + bumper1.width)
+        ) {
+            mainBall.speed = mainBall.speed * -1;
+        } else if(mainBall.x + mainBall.speed < bumper1.x) {
+            player2Score += 1;
+            updateScore()
+            mainBall.speed = mainBall.speed * -1;
+            mainBall.x = 100 + mainBall.speed;
+            mainBall.y += mainBall.gravity;
+        } else if(mainBall.x + mainBall.speed > bumper2.x + bumper2.width) {
+            player1Score += 1;
+            updateScore()
+            mainBall.speed = mainBall.speed * -1;
+            mainBall.x = 100 + mainBall.speed;
+            mainBall.y += mainBall.gravity;
+        }
     drawElements();
 }
 
@@ -81,6 +102,10 @@ function updateGame(){
     window.requestAnimationFrame(updateGame)
 }
 updateGame();
+
+function updateScore() {
+    scoreText.textContent = `${player1Score} : ${player2Score}`
+};
 
 let player1Score = 0;
 let player2Score = 0;
